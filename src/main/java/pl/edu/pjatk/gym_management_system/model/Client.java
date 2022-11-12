@@ -2,14 +2,14 @@ package pl.edu.pjatk.gym_management_system.model;
 
 import pl.edu.pjatk.gym_management_system.model.enums.Gender;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Client")
 public class Client {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "firstName")
@@ -59,4 +59,5 @@ public class Client {
     public Gender getGender() {
         return gender;
     }
+
 }
