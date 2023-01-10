@@ -3,20 +3,19 @@ package pl.edu.pjatk.gym_management_system.model;
 import pl.edu.pjatk.gym_management_system.model.enums.Gender;
 import pl.edu.pjatk.gym_management_system.model.enums.TrainerQualifications;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Trainer {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "age")
@@ -27,8 +26,6 @@ public class Trainer {
 
     @Column(name = "qualifications")
     private TrainerQualifications qualifications;
-
-
 
     public Trainer() {
     }

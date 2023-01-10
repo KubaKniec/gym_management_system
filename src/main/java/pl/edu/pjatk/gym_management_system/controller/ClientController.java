@@ -1,4 +1,4 @@
-package pl.edu.pjatk.gym_management_system.model.controller;
+package pl.edu.pjatk.gym_management_system.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ public class ClientController {
     ClientService clientService;
 
     @Autowired
-    public ClientController(ClientService clientService){
+    public ClientController(ClientService clientService) {
         this.clientService = clientService;
     }
 
