@@ -27,8 +27,12 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public List<Client> findAllClients() {
+    public List<Client> getAllClients() {
         return clientRepository.findAll();
+    }
+
+    public Client getClientById(Long id){
+        return clientRepository.getReferenceById(id);
     }
 
     public Client findClientByFirstNameAndLastName(String firstName, String lastName) {
