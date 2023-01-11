@@ -15,36 +15,66 @@ public class ClientController {
     ClientService clientService;
 
     @Autowired
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
+    public ClientController(ClientService clientService){ this.clientService = clientService;}
 
     @GetMapping
-    public ResponseEntity <List<Client>> findAllClients(){
-        return ResponseEntity.ok(clientService.getAllClients());
-    }
+    public ResponseEntity<List<Client>> getAllClient(){return ResponseEntity.ok(clientService.findAllClients());}
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody Client client){
+    public   ResponseEntity<Client> createClient(@RequestBody Client client){
         return ResponseEntity.ok(clientService.createClient(client));
     }
-
     @GetMapping("/{id}")
-    public ResponseEntity<Client> findClientById(@PathVariable("id") Long id){
+    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id){
         return ResponseEntity.ok(clientService.getClientById(id));
     }
-
+//    @GetMapping("/{name}/{lastname}")
+//    public ResponseEntity<Client> getClientByFirstNameAndLastName(@PathVariable("name") String name , @PathVariable("lastname") String lastname){
+//        return  ResponseEntity.ok(clientService.findClientByFistNameAndLastName(name, lastname));
+//    }
     @GetMapping("/get")
     public ResponseEntity<Client> getClientByIdRequestParam(@RequestParam(name = "id") Long id){
         return ResponseEntity.ok(clientService.getClientById(id));
     }
-
     @DeleteMapping
-    public ResponseEntity<String> deleteClientById(@RequestParam("id") Long id){
+    public ResponseEntity<String> deleteAuthorById(@PathVariable("id") Long id){
         clientService.deleteClientById(id);
         return ResponseEntity.ok("ok");
-    }
+
+//    ClientService clientService;
+//
+//    @Autowired
+//    public ClientController(ClientService clientService) {
+//        this.clientService = clientService;
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity <List<Client>> findAllClients(){
+//        return ResponseEntity.ok(clientService.getAllClients());
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<Client> createClient(@RequestBody Client client){
+//        return ResponseEntity.ok(clientService.createClient(client));
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Client> findClientById(@PathVariable("id") Long id){
+//        return ResponseEntity.ok(clientService.getClientById(id));
+//    }
+//
+//    @GetMapping("/get")
+//    public ResponseEntity<Client> getClientByIdRequestParam(@RequestParam(name = "id") Long id){
+//        return ResponseEntity.ok(clientService.getClientById(id));
+//    }
+//
+//    @DeleteMapping
+//    public ResponseEntity<String> deleteClientById(@RequestParam("id") Long id){
+//        clientService.deleteClientById(id);
+//        return ResponseEntity.ok("ok");
+//    }
 
     //todo update
 
+    }
 }
