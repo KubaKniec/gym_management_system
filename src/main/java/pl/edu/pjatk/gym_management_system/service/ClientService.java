@@ -1,12 +1,11 @@
 package pl.edu.pjatk.gym_management_system.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.gym_management_system.model.Client;
 import pl.edu.pjatk.gym_management_system.repository.ClientRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 //crud
 //create
@@ -15,13 +14,9 @@ import java.util.Optional;
 //delete
 
 @Service
+@RequiredArgsConstructor
 public class ClientService {
-    ClientRepository clientRepository;
-
-    @Autowired
-    public void ClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
+    private final ClientRepository clientRepository;
 
     public Client createClient(Client client) {
         return clientRepository.save(client);
@@ -32,24 +27,19 @@ public class ClientService {
     }
 
     public Client getClientById(Long id) {
-        return clientRepository.getReferenceById(id);
+        return clientRepository.findById(id).orElse(null);
     }
 
     public void deleteClientById(Long id) {
         clientRepository.deleteById(id);
     }
 
-    //todo naprawic funkcje na dole bo nie dziala
+    //TODO: naprawic funkcje na dole bo nie dziala
     public Client findClientByFistNameAndLastName(String firstName, String lastName) {
-
-        Optional<Client> client = clientRepository.findClientByFirstNameAndLastName(firstName, lastName);
-
-        if (client.isPresent()) {
-            return client.get();
-        }
-        throw new IllegalArgumentException();
+        return clientRepository.findByFirstNameAndLastName(firstName, lastName).orElseThrow(IllegalArgumentException::new);
     }
 
-
-    //todo update client
+    public Client updateClient(Client client) {
+        return clientRepository.save(client);
+    }
 }

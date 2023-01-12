@@ -6,49 +6,40 @@ package pl.edu.pjatk.gym_management_system.service;
 //update
 //delete
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.gym_management_system.model.Ticket;
 import pl.edu.pjatk.gym_management_system.repository.TicketRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TicketService {
+    private final TicketRepository ticketRepository;
 
-    TicketRepository ticketRepository;
-
-    @Autowired
-    public TicketService(TicketRepository ticketRepository) {
-        this.ticketRepository = ticketRepository;
-    }
-
-    public Ticket createTicket(Ticket ticket){
+    public Ticket createTicket(Ticket ticket) {
         return ticketRepository.save(ticket);
     }
 
-    public List<Ticket> findAllTickets(){
+    public List<Ticket> findAllTickets() {
         return ticketRepository.findAll();
     }
 
-    public Ticket getTicketById(Long id){
-        return ticketRepository.getReferenceById(id);
+    public Ticket getTicketById(Long id) {
+        return ticketRepository.findById(id).orElse(null);
     }
 
-    public void deleteTicket(Long id){
+    public void deleteTicket(Long id) {
         ticketRepository.deleteById(id);
     }
 
-    //todo sprawdzic dzialanie tej metody, moze bedzie miala zwracac np liste ???
-    public Ticket findAllTicketsByPrice(Double price){
-
-        Optional<Ticket> ticket = ticketRepository.findAllTicketsByPrice(price);
-        if (ticket.isPresent()){
-            return ticket.get();
-        }
-        throw new IllegalArgumentException();
+    //TODO: sprawdzic dzialanie tej metody, moze bedzie miala zwracac np liste
+    public List<Ticket> findAllTicketsByPrice(Double price) {
+        return ticketRepository.findAllByPrice(price);
     }
 
-    //todo update ticket
+    public Ticket updateTicket(Ticket ticket) {
+        return ticketRepository.save(ticket);
+    }
 }

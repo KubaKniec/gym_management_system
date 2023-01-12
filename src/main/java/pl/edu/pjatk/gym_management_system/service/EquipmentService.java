@@ -6,18 +6,35 @@ package pl.edu.pjatk.gym_management_system.service;
 //update
 //delete
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.edu.pjatk.gym_management_system.model.Equipment;
 import pl.edu.pjatk.gym_management_system.repository.EquipmentRepository;
 
-@Service
-public class EquipmentService {
-    EquipmentRepository equipmentRepository;
+import java.util.List;
 
-    @Autowired
-    public EquipmentService(EquipmentRepository equipmentRepository) {
-        this.equipmentRepository = equipmentRepository;
+@Service
+@RequiredArgsConstructor
+public class EquipmentService {
+    private final EquipmentRepository equipmentRepository;
+
+    public Equipment createEquipment(Equipment equipment) {
+        return equipmentRepository.save(equipment);
     }
 
-//    public createEquipment
+    public List<Equipment> findAllEquipments() {
+        return equipmentRepository.findAll();
+    }
+
+    public Equipment getEquipmentById(Long id) {
+        return equipmentRepository.findById(id).orElse(null);
+    }
+
+    public void deleteEquipmentById(Long id) {
+        equipmentRepository.deleteById(id);
+    }
+
+    public Equipment updateEquipment(Equipment equipment) {
+        return equipmentRepository.save(equipment);
+    }
 }
