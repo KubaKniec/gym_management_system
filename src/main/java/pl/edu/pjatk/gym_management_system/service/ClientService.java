@@ -19,64 +19,37 @@ public class ClientService {
     ClientRepository clientRepository;
 
     @Autowired
-    public void ClientService(ClientRepository clientRepository){
+    public void ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
-    public Client createClient(Client client){
+
+    public Client createClient(Client client) {
         return clientRepository.save(client);
     }
-    public List<Client> findAllClients(){return clientRepository.findAll();}
 
-    public Client getClientById(Long id){return clientRepository.getReferenceById(id);}
+    public List<Client> findAllClients() {
+        return clientRepository.findAll();
+    }
 
-    public void deleteClientById(Long id){clientRepository.deleteById(id);}
+    public Client getClientById(Long id) {
+        return clientRepository.getReferenceById(id);
+    }
 
-    public Client findClientByFistNameAndLastName(String firstName,String lastName){
+    public void deleteClientById(Long id) {
+        clientRepository.deleteById(id);
+    }
 
-        Optional<Client> client = clientRepository.findClientByFirstNameAndLastName(firstName,lastName);
+    //todo naprawic funkcje na dole bo nie dziala
+    public Client findClientByFistNameAndLastName(String firstName, String lastName) {
 
-        if (client.isPresent()){
+        Optional<Client> client = clientRepository.findClientByFirstNameAndLastName(firstName, lastName);
 
+        if (client.isPresent()) {
             return client.get();
         }
         throw new IllegalArgumentException();
     }
 
 
-//    ClientRepository clientRepository;
-//
-//    @Autowired
-//    public void ClientService(ClientRepository clientRepository) {
-//        this.clientRepository = clientRepository;
-//    }
-//
-//    public Client createClient(Client client) {
-//        return clientRepository.save(client);
-//    }
-//
-//    public List<Client> getAllClients() {
-//        return clientRepository.findAll();
-//    }
-//
-//    public Client getClientById(Long id) {
-//        Optional<Client> b = clientRepository.findById(id);
-//        if (b.isPresent()) {
-//            return b.get();
-//        }
-//        throw new IllegalArgumentException();
-//    }
-//
-//    public Client findClientByFirstNameAndLastName(String firstName, String lastName) {
-//        Optional<Client> client = clientRepository.findClientByFirstNameAndLastName(firstName, lastName);
-//        if (client.isPresent()) {
-//            return client.get();
-//        }
-//        throw new IllegalArgumentException();
-//    }
-//
-//    public void deleteClientById(Long id) {
-//        clientRepository.deleteById(id);
-//    }
-
-    //todo update
+    //todo update client
 }

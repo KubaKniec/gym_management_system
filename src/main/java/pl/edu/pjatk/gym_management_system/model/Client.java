@@ -14,12 +14,12 @@ public class Client {
     private String firstName;
     @Column(name = "Last_name")
     private String lastName;
-    @Column(name="Age")
+    @Column(name = "Age")
     private int age;
-    @Column(name="Gender")
+    @Column(name = "Gender")
     private Gender gender;
 
-    public Client(){
+    public Client() {
 
     }
 
@@ -31,12 +31,12 @@ public class Client {
         this.gender = gender;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
