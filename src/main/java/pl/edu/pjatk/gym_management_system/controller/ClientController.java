@@ -48,9 +48,9 @@ public class ClientController {
     public ResponseEntity<String> deleteAuthorById(@RequestParam("id") Long id) {
         clientService.deleteClientById(id);
         return ResponseEntity.ok("ok");
-
+    }
 
         //todo update client
 
-    }
+
 }

@@ -14,8 +14,8 @@ public class Ticket {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "client_Id")
-    private Long clientId;
+//    @Column(name = "client_Id")
+//    private Long clientId;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -32,9 +32,8 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(Long id, Long clientId, LocalDate startDate, LocalDate expireDate, TicketCategory ticketCategory, double price) {
+    public Ticket(Long id, LocalDate startDate, LocalDate expireDate, TicketCategory ticketCategory, double price) {
         this.id = id;
-        this.clientId = clientId;
         this.startDate = startDate;
         this.expireDate = expireDate;
         this.ticketCategory = ticketCategory;
@@ -49,9 +48,9 @@ public class Ticket {
         this.id = id;
     }
 
-    public Long getClientId() {
-        return clientId;
-    }
+//    public Long getClientId() {
+//        return clientId;
+//    }
 
     public LocalDate getStartDate() {
         return startDate;
