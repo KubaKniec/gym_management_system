@@ -10,7 +10,7 @@ import pl.edu.pjatk.gym_management_system.service.ClientService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/client", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/client", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class ClientController {
 

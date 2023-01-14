@@ -10,7 +10,7 @@ import pl.edu.pjatk.gym_management_system.service.TrainerService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/trainer", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/trainer", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class TrainerController {
     private final TrainerService trainerService;

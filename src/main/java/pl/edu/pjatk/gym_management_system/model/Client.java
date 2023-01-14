@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.edu.pjatk.gym_management_system.model.enums.Gender;
 
 
@@ -27,7 +29,8 @@ public class Client {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_ticket")
     private Ticket ticket;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_trainer")
     private Trainer trainer;
 }

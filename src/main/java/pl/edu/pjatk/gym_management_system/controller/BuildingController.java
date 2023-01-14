@@ -10,7 +10,7 @@ import pl.edu.pjatk.gym_management_system.service.BuildingService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/building", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/building", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class BuildingController {
 

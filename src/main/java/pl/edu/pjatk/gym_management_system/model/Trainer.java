@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.edu.pjatk.gym_management_system.model.enums.Gender;
 import pl.edu.pjatk.gym_management_system.model.enums.TrainerQualifications;
 
@@ -25,7 +27,8 @@ public class Trainer {
     private int age;
     private Gender gender;
     private TrainerQualifications qualifications;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_building")
     private Building building;
 }

@@ -10,7 +10,7 @@ import pl.edu.pjatk.gym_management_system.service.TicketService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/ticket", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/ticket", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class TicketController {
 

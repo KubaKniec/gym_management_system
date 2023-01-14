@@ -10,7 +10,7 @@ import pl.edu.pjatk.gym_management_system.service.EquipmentService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/equipment", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/equipment", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class EqupimentController {
 
