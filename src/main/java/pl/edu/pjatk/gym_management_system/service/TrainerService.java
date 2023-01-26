@@ -26,7 +26,6 @@ public class TrainerService {
         return trainerRepository.findAll();
     }
 
-    //TODO: naprawic bo wyswietla wszystkich a nie tego z podanym id
     public Trainer getTrainerById(Long id) {
         return trainerRepository.findById(id).orElse(null);
     }

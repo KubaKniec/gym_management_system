@@ -8,6 +8,7 @@ import pl.edu.pjatk.gym_management_system.model.Client;
 import pl.edu.pjatk.gym_management_system.service.ClientService;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/api/client", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -15,40 +16,48 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
+    Logger log = Logger.getLogger(ClientController.class.getName());
 
-    @GetMapping  //dziala
+    @GetMapping
     public ResponseEntity<List<Client>> getAllClient() {
+        log.info("Get all clients");
         return ResponseEntity.ok(clientService.findAllClients());
     }
 
-    @PostMapping  //dziala
+    @PostMapping
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
+        log.info("Create client");
         return ResponseEntity.ok(clientService.createClient(client));
     }
 
-    @GetMapping("/by-path/{id}")  //dziala
+    @GetMapping("/by-path/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Long id) {
+        log.info("Get client by id");
         return ResponseEntity.ok(clientService.getClientById(id));
     }
 
-    @GetMapping("/{name}/{lastname}") //dziala
+    @GetMapping("/{name}/{lastname}")
     public ResponseEntity<Client> getClientByFirstNameAndLastName(@PathVariable String name, @PathVariable String lastname) {
+        log.info("Get client by name and last name");
         return ResponseEntity.ok(clientService.findClientByFistNameAndLastName(name, lastname));
     }
 
-    @GetMapping("/by-request") //nie dziala http://localhost:8080/api/client/get/1
+    @GetMapping("/by-request")
     public ResponseEntity<Client> getClientByIdRequestParam(@RequestParam Long id) {
+        log.info("Get client by id");
         return ResponseEntity.ok(clientService.getClientById(id));
     }
 
-    @DeleteMapping  //dziala
-    public ResponseEntity<Long> deleteAuthorById(@RequestParam Long id) {
+    @DeleteMapping
+    public ResponseEntity<Long> deleteClientById(@RequestParam Long id) {
+        log.info("Delete client");
         clientService.deleteClientById(id);
         return ResponseEntity.ok(id);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Client> updateClient(@RequestBody Client client) {
+        log.info("Update client");
         return ResponseEntity.ok(clientService.updateClient(client));
     }
 }

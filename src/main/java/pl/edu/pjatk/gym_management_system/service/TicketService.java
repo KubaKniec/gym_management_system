@@ -34,7 +34,6 @@ public class TicketService {
         ticketRepository.deleteById(id);
     }
 
-    //TODO: sprawdzic dzialanie tej metody, moze bedzie miala zwracac np liste
     public List<Ticket> findAllTicketsByPrice(Double price) {
         return ticketRepository.findAllByPrice(price);
     }

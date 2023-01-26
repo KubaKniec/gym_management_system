@@ -34,7 +34,6 @@ public class ClientService {
         clientRepository.deleteById(id);
     }
 
-    //TODO: naprawic funkcje na dole bo nie dziala
     public Client findClientByFistNameAndLastName(String firstName, String lastName) {
         return clientRepository.findByFirstNameAndLastName(firstName, lastName).orElseThrow(IllegalArgumentException::new);
     }
